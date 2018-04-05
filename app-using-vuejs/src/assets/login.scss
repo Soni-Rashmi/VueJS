@@ -1,0 +1,22 @@
+.login-form {
+  background-color: #ccc;
+  border: 1px solid #ccc;
+  margin-top: 70px;
+  padding: 50px;
+
+  button, .btn {
+    font-weight: 700;
+    height: 40px;
+    width: 100%;
+  }
+  .fa {
+    font-size: 31px;
+    padding-right: 5px;
+    vertical-align: middle;
+  }
+  .fb-login {
+    margin-bottom: 15px;
+    padding: 0;
+    width: 100%;
+  }
+}

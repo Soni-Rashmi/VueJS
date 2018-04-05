@@ -1,0 +1,10 @@
+<div class="video-group col-sm-4">
+  <div v-for="video in videoList" @click="getVideoDetail(video)" v-bind:class="{'media':true, 'activeClass':(video.id.videoId === selectedVid)}">
+    <div class="media-left">
+      <img :src="video.snippet.thumbnails.medium.url" class="media-object" />
+    </div>
+    <div class="media-body text-left">
+      <div class="media-heading">{{video.snippet.title}}</div>
+    </div>
+  </div>
+</div>

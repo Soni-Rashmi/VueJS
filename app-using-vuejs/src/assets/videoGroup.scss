@@ -1,0 +1,24 @@
+.video-group {
+  .media {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    max-height: 150px;
+    padding: 15px;
+    img {
+      height: 100px;
+      width: 150px;
+    }
+    .media-heading {
+      font-weight: bold;
+    }
+    &:hover {
+      background-color: #ccc;
+
+    }
+  }
+  .activeClass {
+    background-color: #f1f1f1;
+  }
+}

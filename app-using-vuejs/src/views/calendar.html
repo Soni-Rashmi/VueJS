@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <full-calendar :events="getEvents" :config="config" ref="calendar" @event-selected="eventSelected" @event-created="eventCreated" @event-drop="eventDrop"></full-calendar>
+  <app-modal v-if="isShowModal">
+    <h3 slot="header" class="modal-title">
+      Modal title
+    </h3>
+    <add-event slot="body"></add-event>
+    <div slot="footer">
+      <button type="button" class="btn btn-outline-info" @click="closeModal"> Close </button>
+      <button type="submit" class="btn btn-primary" form="add-event">
+        Create Event
+      </button>
+    </div>
+  </app-modal>
+</div>

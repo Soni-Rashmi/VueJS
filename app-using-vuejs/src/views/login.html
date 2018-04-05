@@ -1,0 +1,49 @@
+<div class="login-form col-sm-4 col-sm-offset-4">
+  <form class="form-horizontal" @submit.prevent="submitForm">
+    <div class="form-group" :class="{'has-error': errors.has('email')}">
+      <input class="form-control" v-validate="{required: true, email: true}" id="email" :class="{'has-danger': errors.has('email')}" name="email" type="text" placeholder="Email" v-model="email">
+      <span v-show="errors.has('email')" class="pull-left text-danger">{{ errors.first('email')}}</span>
+    </div>
+    <div class="form-group" :class="{'has-error': errors.has('pwd')}">
+      <input class="form-control" v-validate="'required'" type="password" :class="{'has-danger': errors.has('pwd')}" id="pwd" name="pwd" placeholder="Enter password" v-model="pwd">
+      <span v-show="errors.has('pwd')" class="pull-left text-danger">{{ errors.first('pwd')}}</span>
+    </div>
+    <!-- <div :class="{'form-group': true, 'has-error': errors.has('gender')}">
+      <label class="control-label col-sm-2">Gender:</label>
+      <div :class="{'col-sm-8': true, 'pull-left': true, 'has-error': errors.has('gender')}">
+        <label class="col-sm-3">
+          <input v-validate="'required'" name="gender" type="radio" value="1" v-model="gender">&nbsp Male
+        </label>
+        <label class="col-sm-5">
+          <input name="gender" type="radio" value="2" v-model="gender">&nbsp Female
+        </label>
+        <span v-show="errors.has('gender')" class="pull-left text-danger">{{ errors.first('gender')}}</span>
+      </div>
+    </div>
+    <div :class="{'form-group': true, 'has-error': errors.has('terms')}">
+      <label class="control-label col-sm-2">I agree:</label>
+      <div :class="{'col-sm-8': true, 'pull-left': true, 'has-error': errors.has('terms')}">
+        <label class="col-sm-3">
+          <input v-validate="'required'" name="terms" type="checkbox" v-model="terms">
+        </label>
+        <span v-show="errors.has('terms')" class="pull-left text-danger">{{ errors.first('terms')}}</span>
+      </div>
+    </div> -->
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" >Login</button>
+    </div>
+    <div class="row">
+      <fb-login class="fb-login"
+        appId="190018165082622"
+        @login="getUserData"
+        @logout="onLogout"
+      >
+      </fb-login>
+    </div>
+    <div class="form-group">
+      <button id="signin-button" type="button" name="button" v-on:click="signIn" class="btn pull-left btn-primary"> <i class="fa fa-google-plus-official fa-2x"></i>
+      <span>Sign in with Google</span>
+      </button>
+    </div>
+  </form>
+</div>
