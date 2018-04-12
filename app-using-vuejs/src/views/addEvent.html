@@ -1,0 +1,48 @@
+<div class="form-wrapper">
+  <form id="add-event" class="form-horizontal col-sm-8 col-sm-offset-2">
+    <div class="form-group" :class="{'has-error': errors.has('eventName')}">
+      <input
+        id="event-name"
+        class="form-control"
+        name="eventName"
+        type="text"
+        placeholder="Event Name"
+        v-model="eventName"
+        v-validate="{required: true}"
+        :class="{'has-danger': errors.has('eventName')}" >
+      <span v-show="errors.has('eventName')" class="pull-left text-danger">{{ errors.first('eventName')}}</span>
+    </div>
+    <!-- <div class="form-group" :class="{'has-error': errors.has('eventStartDate')}">
+      <input class="form-control" v-validate="'required'" type="date" :class="{'has-danger': errors.has('eventStartDate')}" id="event-start-date" name="eventStartDate" placeholder="Enter event start date" v-model="eventStartDate">
+      <span v-show="errors.has('eventStartDate')" class="pull-left text-danger">{{ errors.first('eventStartDate')}}</span>
+    </div> -->
+    <!-- <div class="form-group" :class="{'has-error': errors.has('eventEndDate')}">
+      <input class="form-control" v-validate="'required'" type="date" :class="{'has-danger': errors.has('eventEndDate')}" id="event-end-date" name="eventEndDate" placeholder="Enter event end date" v-model="eventEndDate">
+      <span v-show="errors.has('eventEndDate')" class="pull-left text-danger">{{ errors.first('eventEndDate')}}</span>
+    </div> -->
+    <div class="input-wrapper">
+      <datepicker
+        name="eventStartDate"
+        placeholder="Select start date"
+        v-model="eventStartDate"
+        v-validate="'required'"
+        :wrapper-class="{'form-group': true, 'has-error': errors.has('eventStartDate')}" :bootstrap-styling="true"
+        :highlighted="highlighted"
+        @closed="pickerClosed">
+      </datepicker>
+      <span v-if="errors.has('eventStartDate')" class="errors pull-left text-danger">{{ errors.first('eventStartDate')}} </span>
+    </div>
+    <div class="input-wrapper">
+      <datepicker
+        name="eventEndDate"
+        placeholder="Select end date"
+        v-model="eventEndDate"
+        v-validate="'required'"
+        :wrapper-class="{'form-group': true, 'has-error': errors.has('eventEndDate')}" :bootstrap-styling="true"
+        :highlighted="highlighted"
+        @closed="pickerClosed">
+      </datepicker>
+      <span v-if="errors.has('eventEndDate')" class="errors pull-left text-danger">{{ errors.first('eventEndDate')}} </span>
+    </div>
+  </form>
+</div>

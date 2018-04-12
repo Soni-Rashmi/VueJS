@@ -5,6 +5,7 @@ export default {
   name: 'Header',
   mounted() {
     this.$store.commit('isUserLoggedIn', (this.$localStorage.get('isLoggedIn') ? this.$localStorage.get('isLoggedIn') : '' ))
+    this.$store.commit('userInfo', (JSON.parse(this.$localStorage.get('userProfileData')) ? JSON.parse(this.$localStorage.get('userProfileData')) : '' ))
   },
   methods: {
     logout: function () {

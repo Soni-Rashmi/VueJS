@@ -1,5 +1,5 @@
 .login-form {
-  background-color: #ccc;
+  // background-color: #ccc;
   border: 1px solid #ccc;
   margin-top: 70px;
   padding: 50px;
@@ -18,5 +18,8 @@
     margin-bottom: 15px;
     padding: 0;
     width: 100%;
+  }
+  .input-wrapper {
+    margin-bottom: 25px;
   }
 }

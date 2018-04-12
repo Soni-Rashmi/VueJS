@@ -1,0 +1,66 @@
+<div class="data-table container-fluid">
+  <vue-good-table
+    :columns="columns"
+    :rows="rowData"
+    :select-options="{
+      enabled: true
+    }"
+    :sort-options="{
+      enabled: true,
+      initialSortBy: {field: 'id', type: 'asc'}
+     }"
+    :search-options="{
+      enabled: true
+    }"
+    :pagination-options="{
+      enabled: true,
+      perPage: 8,
+    }"
+    :globalSearch="true"
+    styleClass="vgt-table striped bordered">
+    <template slot="table-row" slot-scope="props">
+      <span v-if="props.column.field == 'action'">
+        <button type="button" name="button" @click="editRow(props.row)">
+          <i class="fa fa-edit"></i>
+        </button>
+        <button type="button" name="button"
+          v-confirm="{
+            okText: 'Yes',
+            cancelText: 'No',
+            ok: dialog => deleteRow(props.row),
+            cancel: doNothing,
+            message: 'Are you sure?'
+          }"><i class="fa fa-trash"></i>
+        </button>
+      </span>
+      <span v-else>
+        {{props.formattedRow[props.column.field]}}
+      </span>
+    </template>
+    <div slot="table-actions">
+     This will show up on the top right of the table.
+   </div>
+  </vue-good-table>
+  <app-modal v-if="isShowModal">
+    <h3 slot="header" class="modal-title">
+      Edit row data
+    </h3>
+    <div slot="body">
+      <form id="edit-row" class="form-horizontal col-sm-8 col-sm-offset-2" >
+        <div class="form-group">
+          <input class="form-control" name="name" type="text" v-model="rowContent.name">
+        </div>
+        <div class="form-group">
+          <input class="form-control" name="createdAt" type="text" v-model="rowContent.createdAt">
+        </div>
+        <div class="form-group">
+          <input class="form-control" name="score" v-model="rowContent.score">
+        </div>
+      </form>
+    </div>
+    <div slot="footer">
+      <button type="button" class="btn btn-outline-info" @click="closeModal"> Close </button>
+      <button type="button" class="btn btn-primary" form="edit-row" @click.prevent="submitForm"> Save </button>
+    </div>
+  </app-modal>
+</div>

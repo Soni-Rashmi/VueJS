@@ -1,12 +1,16 @@
 <div class="login-form col-sm-4 col-sm-offset-4">
   <form class="form-horizontal" @submit.prevent="submitForm">
-    <div class="form-group" :class="{'has-error': errors.has('email')}">
-      <input class="form-control" v-validate="{required: true, email: true}" id="email" :class="{'has-danger': errors.has('email')}" name="email" type="text" placeholder="Email" v-model="email">
-      <span v-show="errors.has('email')" class="pull-left text-danger">{{ errors.first('email')}}</span>
+    <div class="input-wrapper" :class="{'has-error': errors.has('email')}">
+      <floating-label :config="{label: 'Email'}">
+          <input v-validate="{required: true, email: true}" id="email" :class="{'has-danger': errors.has('email')}" name="email" type="text" v-model="email">
+          <span v-show="errors.has('email')" class="pull-left text-danger">{{ errors.first('email')}}</span>
+      </floating-label>
     </div>
-    <div class="form-group" :class="{'has-error': errors.has('pwd')}">
-      <input class="form-control" v-validate="'required'" type="password" :class="{'has-danger': errors.has('pwd')}" id="pwd" name="pwd" placeholder="Enter password" v-model="pwd">
-      <span v-show="errors.has('pwd')" class="pull-left text-danger">{{ errors.first('pwd')}}</span>
+    <div class="input-wrapper" :class="{'has-error': errors.has('pwd')}">
+      <floating-label :config="{label: 'Password'}">
+        <input v-validate="'required'" type="password" :class="{'has-danger': errors.has('pwd')}" id="pwd" name="pwd" v-model="pwd">
+        <span v-show="errors.has('pwd')" class="pull-left text-danger">{{ errors.first('pwd')}}</span>
+      </floating-label>
     </div>
     <!-- <div :class="{'form-group': true, 'has-error': errors.has('gender')}">
       <label class="control-label col-sm-2">Gender:</label>
@@ -30,7 +34,7 @@
       </div>
     </div> -->
     <div class="form-group">
-      <button type="submit" class="btn btn-primary" >Login</button>
+      <button type="submit" class="btn btn-primary">Login</button>
     </div>
     <div class="row">
       <fb-login class="fb-login"
@@ -41,8 +45,8 @@
       </fb-login>
     </div>
     <div class="form-group">
-      <button id="signin-button" type="button" name="button" v-on:click="signIn" class="btn pull-left btn-primary"> <i class="fa fa-google-plus-official fa-2x"></i>
-      <span>Sign in with Google</span>
+      <button id="signin-button" type="button" name="button" v-on:click="signIn" class="btn btn-primary"> <i class="fa fa-google-plus-official fa-2x"></i>
+        <span>Sign in with Google</span>
       </button>
     </div>
   </form>

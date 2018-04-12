@@ -4,6 +4,7 @@
 import Vue from 'vue'
 import { Validator, ErrorBag } from 'vee-validate'
 import facebookLogin from 'facebook-login-vuejs'
+import FloatingLabel from 'vue-simple-floating-labels'
 
 const customMsg = {
   custom: {
@@ -37,7 +38,7 @@ export default {
     }
   },
   methods: {
-    submitForm: function () {
+    submitForm: function (submitEvent) {
       this.$validator.localize('en', customMsg);
       this.$validator.validateAll().then((result) => {
         if (result) {
@@ -50,15 +51,14 @@ export default {
     },
     getUserData: function (data) {
       let self = this
-      console.log(data);
       data.FB.api('/me', 'get', {fields: 'name, email, picture, cover'}, function(response) {
-        console.log(response);
         self.userData = {
           'userName': response.name,
           'userEmail': response.email,
           'profileImg': response.picture.data.url
         }
         self.$localStorage.set('isLoggedIn', true)
+        self.$localStorage.set('userProfileData', JSON.stringify(self.userData))
         self.$store.commit('userInfo', self.userData)
         self.$store.commit('isUserLoggedIn', true)
         self.$router.push('/youtube-dashboard')
@@ -79,16 +79,18 @@ export default {
          'profileImg': authorizationData.w3.Paa
        }
        this.$localStorage.set('isLoggedIn', true)
+       this.$localStorage.set('userProfileData', JSON.stringify(this.userData))
        this.$store.commit('userInfo', this.userData)
        this.$store.commit('isUserLoggedIn', true)
        this.$router.push('/youtube-dashboard')
      },
      onSignInError: function(error) {
-       console.log(error)
+       // console.log(error)
      }
   },
   components: {
-    'fb-login': facebookLogin
+    'fb-login': facebookLogin,
+    'floating-label': FloatingLabel
   }
 }
 </script>

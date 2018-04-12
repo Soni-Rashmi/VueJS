@@ -7,15 +7,41 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" >WebSiteName</a>
+        <router-link to="youtube-dashboard" class="navbar-brand" >Dashboard</router-link>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><router-link to="/home">Home</router-link></li>
-          <li><router-link to="/calendar">Calendar</router-link></li>
+          <router-link to="/home" tag="li">
+            <a> Home </a>
+          </router-link>
+          <router-link to="/calendar" tag="li">
+            <a> Calendar </a>
+          </router-link>
+          <router-link to="/table" tag="li">
+            <a> Data Table </a>
+          </router-link>
+          <router-link to="/map" tag="li">
+            <a> Map </a>
+          </router-link>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Charts
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <router-link to="/chart/bar-chart" tag="li">
+                <a>Bar Chart</a>
+              </router-link>
+              <router-link to="/chart/line-chart" tag="li">
+                <a>Line Chart</a>
+              </router-link>
+              <router-link to="/chart/doughnut-chart" tag="li">
+                <a>Doughnut Chart</a>
+              </router-link>
+            </ul>
+          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right" v-if="isLoggedInUser">
-          <li><img :src="getUser.profileImg" class="profile-img"/></li>
+          <li><img :src="getUser.profileImg" class="profile-img"/>
+          </li>
           <li><a>{{getUser.userName}}</a></li>
           <li><a @click="logout">Logout</a></li>
         </ul>

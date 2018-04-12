@@ -1,6 +1,6 @@
 .navbar {
   .navbar-right{
-   li a {
+   li a, img {
        cursor: pointer;
      }
     .profile-img {
@@ -9,4 +9,16 @@
        padding: 5px;
     }
   }
+  li.router-link-active.router-link-exact-active {
+    border-bottom: 3px solid black;
+    font-weight: 600;
+  }
+  .dropdown-menu {
+    li.router-link-active.router-link-exact-active {
+      border-bottom: none;
+      border-left: 3px solid black;
+      font-weight: 600;
+    }
+  }
+  
 }
